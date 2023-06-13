@@ -78,7 +78,7 @@ console.log("isPositiveNumber(-2)", isPositiveNumber(-2)); // Виведе: fals
 
 function isEmptyString(str) {
   // Перевіряємо, чи рядок str дорівнює пустому рядку ('')
-  return str === "" ? "ture" : "false";
+  return str === "" ? "true" : "false";
 
   // Якщо так, то str є порожнім рядком, тому повертаємо true
   // В іншому випадку, якщо str містить хоча б один символ, то str не є порожнім рядком, тому повертаємо false
@@ -93,11 +93,11 @@ console.log('isEmptyString("Hello")', isEmptyString("Hello")); // Виведе: 
 
 function checkDataType(value) {
   // Отримуємо тип значення value за допомогою оператора typeof
-  // typeof value;
+  let type = typeof value;
   // Виводимо у консоль повідомлення, яке містить значення value та його тип
-  console.log(`Значення "${value}" має тип "${typeof value}"`);
+  console.log(`Значення "${value}" має тип "${type}"`);
   // Повертаємо тип значення value
-  return value;
+  return type;
 }
 
 // Приклади виклику функції
@@ -136,8 +136,9 @@ function getUserStatus(age) {
     return "Неповнолітній";
   } else if (age >= 18 && age < 65) {
     return "Дорослий";
+  } else {
+    return "Пенсіонер";
   }
-  return "Пенсіонер";
   // Якщо age менше 18, то користувач є "Неповнолітнім"
   // Якщо age більше або дорівнює 18 і менше 65, то користувач є "Дорослим"
   // В іншому випадку (якщо age більше або дорівнює 65), то користувач є "Пенсіонером"
@@ -192,26 +193,40 @@ console.log("getDayOfWeek(3)", getDayOfWeek(3)); // Виведе: "Середа"
 console.log("getDayOfWeek(6)", getDayOfWeek(6)); // Виведе: "Субота"
 console.log("getDayOfWeek(8)", getDayOfWeek(8)); // Виведе: "Невірний номер дня"
 
-// Задача 10: Напишіть функцію getVariableType, яка приймає змінну variable і повертає рядок, що відповідає типу цієї змінної. Використовуйте тернарний оператор для визначення типу змінної.
+// Задача 10: Напишіть функцію getVariableType, яка приймає змінну variable і повертає рядок,
+// що відповідає типу цієї змінної.
+// Використовуйте тернарний оператор для визначення типу змінної.
 
 function getVariableType(variable) {
   // Отримуємо тип змінної variable за допомогою оператора typeof
-  // typeof variable;
+  const type = typeof variable;
+
   // Встановлюємо відповідне повідомлення залежно від отриманого типу
-  if (typeof variable === "number") {
-    return "Це число";
-  } else if (typeof variable === "string") {
-    return "Це строка";
-  } else if (typeof variable === "boolean") {
-    return "Це булове значення";
-  }
-  return "Інший тип";
 
   // Якщо тип змінної - number, то повідомлення = "Це число"
+  let isType =
+    type === "number"
+      ? "Це число"
+      : type === "string"
+      ? "Це строка"
+      : type === "boolean"
+      ? "Це булове значення"
+      : "Це інший тип";
+
   // Якщо тип змінної - string, то повідомлення = "Це рядок"
   // Якщо тип змінної - boolean, то повідомлення = "Це булеве значення"
-  // В іншому випадку (якщо тип змінної не входить у попередні категорії), то повідомлення = "Це інший тип"
+  // В іншому випадку (якщо тип змінної не входить у попередні категорії),
+  // то повідомлення = "Це інший тип"
   // Повертаємо встановлене повідомлення як результат функції
+
+  // if (typeof variable === "number") {
+  //   return "Це число";
+  // } else if (typeof variable === "string") {
+  //   return "Це строка";
+  // } else if (typeof variable === "boolean") {
+  //   return "Це булове значення";
+  // }
+  return isType;
 }
 
 // Приклади виклику функції
